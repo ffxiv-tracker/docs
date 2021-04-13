@@ -4,7 +4,7 @@
 
 ```javascript
 const result = await axios(
-    'http://34.219.238.37/tasks',
+    'https://api.beta.ffxiv.anid.dev/tasks',
 );
 ```
 
@@ -43,7 +43,7 @@ This endpoint retrieves all master tasks.
 
 ### HTTP Request
 
-`GET http://34.219.238.37/tasks`
+`GET https://api.beta.ffxiv.anid.dev/tasks`
 
 # User Tasks
 
@@ -51,7 +51,7 @@ This endpoint retrieves all master tasks.
 
 ```javascript
 const result = await axios(
-    'http://34.219.238.37/user/tasks',
+    'https://api.beta.ffxiv.anid.dev/user/tasks',
 );
 ```
 
@@ -81,7 +81,7 @@ This endpoint retrieves all tasks the user has selected for their list.
 
 ### HTTP Request
 
-`GET http://34.219.238.37/user/tasks`
+`GET https://api.beta.ffxiv.anid.dev/user/tasks`
 
 ## Save User Tasks
 
@@ -111,7 +111,7 @@ This endpoint save tasks the user has selected for their list, for a particular 
 
 ### HTTP Request
 
-`POST http://34.219.238.37/user/tasks`
+`POST https://api.beta.ffxiv.anid.dev/user/tasks`
 
 ### Body Parameters
 

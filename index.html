@@ -362,7 +362,7 @@
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 <h1 id='master-tasks'>Master Tasks</h1><h2 id='get-all-master-tasks'>Get All Master Tasks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
-    <span class="dl">'</span><span class="s1">http://34.219.238.37/tasks</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/tasks</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">);</span>
 </code></pre></div>
 <blockquote>
@@ -397,9 +397,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint retrieves all master tasks.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://34.219.238.37/tasks</code></p>
+<p><code>GET https://api.beta.ffxiv.anid.dev/tasks</code></p>
 <h1 id='user-tasks'>User Tasks</h1><h2 id='get-all-user-tasks'>Get All User Tasks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
-    <span class="dl">'</span><span class="s1">http://34.219.238.37/user/tasks</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">);</span>
 </code></pre></div>
 <blockquote>
@@ -425,7 +425,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint retrieves all tasks the user has selected for their list.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://34.219.238.37/user/tasks</code></p>
+<p><code>GET https://api.beta.ffxiv.anid.dev/user/tasks</code></p>
 <h2 id='save-user-tasks'>Save User Tasks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://34.219.238.37/user/tasks</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gold Saucer</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">frequency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Weekly</span><span class="dl">"</span><span class="p">,</span>
@@ -447,7 +447,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint save tasks the user has selected for their list, for a particular category.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST http://34.219.238.37/user/tasks</code></p>
+<p><code>POST https://api.beta.ffxiv.anid.dev/user/tasks</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>

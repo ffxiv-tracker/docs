@@ -16,6 +16,13 @@ code_clipboard: true
 
 Welcome to the FFXIV Tracker! You can this API to access FFXIV Tracker's API endpoints, which stores information about tasks in FFXIV.
 
+### Endpoints
+
+Stage | Hostname
+--------- | -----------
+beta | https://api.beta.ffxiv.anid.dev
+prod | 
+
 # Authentication
 
 > To authorize, use this code:

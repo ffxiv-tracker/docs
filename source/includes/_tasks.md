@@ -86,7 +86,7 @@ This endpoint retrieves all tasks the user has selected for their list.
 ## Save User Tasks
 
 ```javascript
-const result = await axios.post('http://34.219.238.37/user/tasks', {
+const result = await axios.post('https://api.beta.ffxiv.anid.dev/user/tasks', {
   "category": "Gold Saucer",
   "frequency": "Weekly",
   "tasks": [

@@ -120,3 +120,77 @@ Parameter | Type | Description
 category | `string` | The category of the task
 frequency | `string` | The frequency of the task
 tasks | `string[]` | A list of task names
+
+# User Completed Tasks
+
+## Get User's Completed Tasks for Today
+
+```javascript
+const result = await axios(
+    'https://api.beta.ffxiv.anid.dev/user/tasks/current',
+);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "category": "Gold Saucer",
+    "frequency": "Weekly",
+    "tasks": [
+      "Fashion Report",
+      "Jumbo Cactpot"
+    ]
+  },
+  {
+    "category": "Raiding",
+    "frequency": "Weekly",
+    "tasks": [
+      "Eden 9 - Umbra"
+    ]
+  }
+]
+```
+
+This endpoint retrieves all the tasks that have been marked as completed for the current point in time, meaning completed tasks for the current day and week.
+
+### HTTP Request
+
+`GET https://api.beta.ffxiv.anid.dev/user/tasks/current`
+
+## Get User's Completed Tasks for a Given Date
+
+```javascript
+const result = await axios(
+    'https://api.beta.ffxiv.anid.dev/user/tasks/2021-06-03',
+);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "category": "Gold Saucer",
+    "frequency": "Weekly",
+    "tasks": [
+      "Fashion Report",
+      "Jumbo Cactpot"
+    ]
+  },
+  {
+    "category": "Raiding",
+    "frequency": "Weekly",
+    "tasks": [
+      "Eden 9 - Umbra"
+    ]
+  }
+]
+```
+
+This endpoint retrieves all the tasks that have been marked as completed for the given date, meaning completed tasks for the given date's day and week.
+
+### HTTP Request
+
+`GET https://api.beta.ffxiv.anid.dev/user/tasks/YYYY-MM-DD`

@@ -338,6 +338,17 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#user-completed-tasks" class="toc-h1 toc-link" data-title="User Completed Tasks">User Completed Tasks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-user-39-s-completed-tasks-for-today" class="toc-h2 toc-link" data-title="Get User's Completed Tasks for Today">Get User's Completed Tasks for Today</a>
+                  </li>
+                  <li>
+                    <a href="#get-user-39-s-completed-tasks-for-a-given-date" class="toc-h2 toc-link" data-title="Get User's Completed Tasks for a Given Date">Get User's Completed Tasks for a Given Date</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -493,6 +504,62 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>A list of task names</td>
 </tr>
 </tbody></table>
+<h1 id='user-completed-tasks'>User Completed Tasks</h1><h2 id='get-user-39-s-completed-tasks-for-today'>Get User&#39;s Completed Tasks for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
+    <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks/current</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold Saucer"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Fashion Report"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Jumbo Cactpot"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raiding"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Eden 9 - Umbra"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all the tasks that have been marked as completed for the current point in time, meaning completed tasks for the current day and week.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.beta.ffxiv.anid.dev/user/tasks/current</code></p>
+<h2 id='get-user-39-s-completed-tasks-for-a-given-date'>Get User&#39;s Completed Tasks for a Given Date</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
+    <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks/2021-06-03</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold Saucer"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Fashion Report"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Jumbo Cactpot"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raiding"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Eden 9 - Umbra"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all the tasks that have been marked as completed for the given date, meaning completed tasks for the given date&#39;s day and week.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.beta.ffxiv.anid.dev/user/tasks/YYYY-MM-DD</code></p>
 
       </div>
       <div class="dark-box">

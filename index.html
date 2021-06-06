@@ -345,6 +345,9 @@
                     <a href="#get-user-39-s-completed-tasks-for-today" class="toc-h2 toc-link" data-title="Get User's Completed Tasks for Today">Get User's Completed Tasks for Today</a>
                   </li>
                   <li>
+                    <a href="#save-user-task-for-today" class="toc-h2 toc-link" data-title="Save User Task for Today">Save User Task for Today</a>
+                  </li>
+                  <li>
                     <a href="#get-user-39-s-completed-tasks-for-a-given-date" class="toc-h2 toc-link" data-title="Get User's Completed Tasks for a Given Date">Get User's Completed Tasks for a Given Date</a>
                   </li>
               </ul>
@@ -402,28 +405,34 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Squadron Mission"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daily"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Treasure Map"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daily"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amalj'aa"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beast Tribe Quests"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daily"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Amalj'aa"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Ananta"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Dwarves"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Ixal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Kobolds"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Kojin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Moogles"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Namazu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Pixies"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Qitari"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Sahagin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Sylphs"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Vanu Vanu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Vath"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ananta"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beast Tribe Quests"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daily Hunts"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daily"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"ARR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Heavensward"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Shadowbringers"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Stormblood"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
@@ -532,6 +541,20 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <p>This endpoint retrieves all the tasks that have been marked as completed for the current point in time, meaning completed tasks for the current day and week.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.beta.ffxiv.anid.dev/user/tasks/current</code></p>
+<h2 id='save-user-task-for-today'>Save User Task for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks/current</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gold Saucer</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">frequency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Weekly</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">task</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Jumbo Cactpot</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">done</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns a 204 with no content.</p>
+</blockquote>
+
+<p>This endpoint saves the submitted task status for the current day/week.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST https://api.beta.ffxiv.anid.dev/user/tasks/current</code></p>
 <h2 id='get-user-39-s-completed-tasks-for-a-given-date'>Get User&#39;s Completed Tasks for a Given Date</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
     <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks/2021-06-03</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">);</span>
@@ -558,7 +581,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves all the tasks that have been marked as completed for the given date, meaning completed tasks for the given date&#39;s day and week.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://api.beta.ffxiv.anid.dev/user/tasks/YYYY-MM-DD</code></p>
 
       </div>

@@ -13,28 +13,34 @@ const result = await axios(
 ```json
 [
   {
-    "name": "Squadron Mission",
-    "category": null,
-    "frequency": "Daily",
-    "orphan": true
-  },
-  {
-    "name": "Treasure Map",
-    "category": null,
-    "frequency": "Daily",
-    "orphan": true
-  },
-  {
-    "name": "Amalj'aa",
     "category": "Beast Tribe Quests",
     "frequency": "Daily",
-    "orphan": false
+    "tasks": [
+      "Amalj'aa",
+      "Ananta",
+      "Dwarves",
+      "Ixal",
+      "Kobolds",
+      "Kojin",
+      "Moogles",
+      "Namazu",
+      "Pixies",
+      "Qitari",
+      "Sahagin",
+      "Sylphs",
+      "Vanu Vanu",
+      "Vath"
+    ]
   },
   {
-    "name": "Ananta",
-    "category": "Beast Tribe Quests",
+    "category": "Daily Hunts",
     "frequency": "Daily",
-    "orphan": false
+    "tasks": [
+      "ARR",
+      "Heavensward",
+      "Shadowbringers",
+      "Stormblood"
+    ]
   }
 ]
 ```
@@ -158,6 +164,26 @@ This endpoint retrieves all the tasks that have been marked as completed for the
 ### HTTP Request
 
 `GET https://api.beta.ffxiv.anid.dev/user/tasks/current`
+
+## Save User Task for Today
+
+```javascript
+const result = await axios.post('https://api.beta.ffxiv.anid.dev/user/tasks/current', {
+  "category": "Gold Saucer",
+  "frequency": "Weekly",
+  "task": "Jumbo Cactpot",
+  "done": true
+});
+```
+
+> The above command returns a 204 with no content.
+
+
+This endpoint saves the submitted task status for the current day/week.
+
+### HTTP Request
+
+`POST https://api.beta.ffxiv.anid.dev/user/tasks/current`
 
 ## Get User's Completed Tasks for a Given Date
 

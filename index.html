@@ -331,10 +331,10 @@
             <a href="#user-tasks" class="toc-h1 toc-link" data-title="User Tasks">User Tasks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-user-tasks" class="toc-h2 toc-link" data-title="Get All User Tasks">Get All User Tasks</a>
+                    <a href="#get-user-tasks-with-today-39-s-status" class="toc-h2 toc-link" data-title="Get User Tasks with Today's Status">Get User Tasks with Today's Status</a>
                   </li>
                   <li>
-                    <a href="#save-user-tasks" class="toc-h2 toc-link" data-title="Save User Tasks">Save User Tasks</a>
+                    <a href="#add-tasks-to-user-list" class="toc-h2 toc-link" data-title="Add Tasks to User List">Add Tasks to User List</a>
                   </li>
               </ul>
           </li>
@@ -342,13 +342,10 @@
             <a href="#user-completed-tasks" class="toc-h1 toc-link" data-title="User Completed Tasks">User Completed Tasks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-user-39-s-completed-tasks-for-today" class="toc-h2 toc-link" data-title="Get User's Completed Tasks for Today">Get User's Completed Tasks for Today</a>
-                  </li>
-                  <li>
                     <a href="#save-user-task-for-today" class="toc-h2 toc-link" data-title="Save User Task for Today">Save User Task for Today</a>
                   </li>
                   <li>
-                    <a href="#get-user-39-s-completed-tasks-for-a-given-date" class="toc-h2 toc-link" data-title="Get User's Completed Tasks for a Given Date">Get User's Completed Tasks for a Given Date</a>
+                    <a href="#save-user-category-for-today" class="toc-h2 toc-link" data-title="Save User Category for Today">Save User Category for Today</a>
                   </li>
               </ul>
           </li>
@@ -368,7 +365,7 @@
 </thead><tbody>
 <tr>
 <td>beta</td>
-<td>https://api.beta.ffxiv.anid.dev</td>
+<td>https://hdnss8awo4.execute-api.us-west-2.amazonaws.com</td>
 </tr>
 <tr>
 <td>prod</td>
@@ -397,7 +394,7 @@
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 <h1 id='master-tasks'>Master Tasks</h1><h2 id='get-all-master-tasks'>Get All Master Tasks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
-    <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/tasks</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/tasks</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">);</span>
 </code></pre></div>
 <blockquote>
@@ -438,9 +435,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint retrieves all master tasks.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.beta.ffxiv.anid.dev/tasks</code></p>
-<h1 id='user-tasks'>User Tasks</h1><h2 id='get-all-user-tasks'>Get All User Tasks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
-    <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks</span><span class="dl">'</span><span class="p">,</span>
+<p><code>GET https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/tasks</code></p>
+<h1 id='user-tasks'>User Tasks</h1><h2 id='get-user-tasks-with-today-39-s-status'>Get User Tasks with Today&#39;s Status</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
+    <span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">);</span>
 </code></pre></div>
 <blockquote>
@@ -451,23 +448,32 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
     </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold Saucer"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Fashion Report"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Jumbo Cactpot"</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fashion Report"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"done"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jumbo Cactpot"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"done"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raiding"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Eden 9 - Umbra"</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eden 9 - Umbra"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"done"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves all tasks the user has selected for their list.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.beta.ffxiv.anid.dev/user/tasks</code></p>
-<h2 id='save-user-tasks'>Save User Tasks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<p><code>GET https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks</code></p>
+<h2 id='add-tasks-to-user-list'>Add Tasks to User List</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gold Saucer</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">frequency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Weekly</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">tasks</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
@@ -488,7 +494,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint save tasks the user has selected for their list, for a particular category.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://api.beta.ffxiv.anid.dev/user/tasks</code></p>
+<p><code>POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -513,35 +519,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>A list of task names</td>
 </tr>
 </tbody></table>
-<h1 id='user-completed-tasks'>User Completed Tasks</h1><h2 id='get-user-39-s-completed-tasks-for-today'>Get User&#39;s Completed Tasks for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
-    <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks/current</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold Saucer"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Fashion Report"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Jumbo Cactpot"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raiding"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Eden 9 - Umbra"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all the tasks that have been marked as completed for the current point in time, meaning completed tasks for the current day and week.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.beta.ffxiv.anid.dev/user/tasks/current</code></p>
-<h2 id='save-user-task-for-today'>Save User Task for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks/current</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='user-completed-tasks'>User Completed Tasks</h1><h2 id='save-user-task-for-today'>Save User Task for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gold Saucer</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">frequency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Weekly</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">task</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Jumbo Cactpot</span><span class="dl">"</span><span class="p">,</span>
@@ -553,36 +531,21 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </blockquote>
 
 <p>This endpoint saves the submitted task status for the current day/week.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://api.beta.ffxiv.anid.dev/user/tasks/current</code></p>
-<h2 id='get-user-39-s-completed-tasks-for-a-given-date'>Get User&#39;s Completed Tasks for a Given Date</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
-    <span class="dl">'</span><span class="s1">https://api.beta.ffxiv.anid.dev/user/tasks/2021-06-03</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">);</span>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current</code></p>
+<h2 id='save-user-category-for-today'>Save User Category for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gold Saucer</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">frequency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Weekly</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">done</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a 204 with no content.</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold Saucer"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Fashion Report"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Jumbo Cactpot"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raiding"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Eden 9 - Umbra"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all the tasks that have been marked as completed for the given date, meaning completed tasks for the given date&#39;s day and week.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://api.beta.ffxiv.anid.dev/user/tasks/YYYY-MM-DD</code></p>
+
+<p>This endpoint saves all tasks under the given category for the current day/week.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current</code></p>
 
       </div>
       <div class="dark-box">

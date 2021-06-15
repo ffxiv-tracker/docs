@@ -20,7 +20,7 @@ Welcome to the FFXIV Tracker! You can this API to access FFXIV Tracker's API end
 
 Stage | Hostname
 --------- | -----------
-beta | https://api.beta.ffxiv.anid.dev
+beta | https://hdnss8awo4.execute-api.us-west-2.amazonaws.com
 prod | 
 
 # Authentication

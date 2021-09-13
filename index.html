@@ -374,28 +374,56 @@
 </tbody></table>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<p>First redirect the user to login:
+<code>javascript
+window.location = &#39;https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/login&#39;;
+</code></p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
+<p>The user will then be redirected back to the app with a <code>code</code> query parameter that needs to be parsed.
+<code>javascript
+const params = new URLSearchParams(window.location.search);
+const code = params.get(&#39;code&#39;);
+</code>
+Exchange the code for a JWT through the API.
+```javascript
+const api = axios.create({
+  baseURL: &#39;https://hdnss8awo4.execute-api.us-west-2.amazonaws.com&#39;
+});</p>
+</blockquote>
+
+<p>const exchangeResponse = await api.post(&#39;/exchange&#39;, {
+    code: code
+});</p>
+
+<p>const jwt = exchangeResponse.data.jwt;
+```</p>
+
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Set the JWT as an authorization header for all future requests.
+```javascript</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>api.defaults.headers.common[&#39;Authorization&#39;] = <code>Bearer ${jwt}</code>
+```</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>The API uses JWTs to allow access to the API. A JWT can be obtained by using the login flow.</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<ol>
+<li>Redirect the user to <code>/login</code>. This will prompt them to login with Discord.</li>
+<li>The user will be redirected to http://localhost:3000/?code=supersecretcode.</li>
+<li>The frontend needs to handle this request by parsing out the <code>code</code> query parameter.</li>
+<li>Make a POST request to <code>/exchange</code> with the <code>code</code> in the request body.</li>
+<li>The response from the above request will contain a JWT for you to use throughout the user session and in all future API requests.</li>
+</ol>
+
+<p>The API expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: Bearer JWT_GOES_HERE</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>JWT_GOES_HERE</code> with the `jwt` from the `/exchange` response.
 </aside>
-<h1 id='master-tasks'>Master Tasks</h1><h2 id='get-all-master-tasks'>Get All Master Tasks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
-    <span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/tasks</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">);</span>
+<h1 id='master-tasks'>Master Tasks</h1><h2 id='get-all-master-tasks'>Get All Master Tasks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/tasks</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -435,10 +463,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint retrieves all master tasks.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/tasks</code></p>
-<h1 id='user-tasks'>User Tasks</h1><h2 id='get-user-tasks-with-today-39-s-status'>Get User Tasks with Today&#39;s Status</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">(</span>
-    <span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">);</span>
+<p><code>GET /tasks</code></p>
+<h1 id='user-tasks'>User Tasks</h1><h2 id='get-user-tasks-with-today-39-s-status'>Get User Tasks with Today&#39;s Status</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/user/tasks</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -472,8 +498,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint retrieves all tasks the user has selected for their list.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks</code></p>
-<h2 id='add-tasks-to-user-list'>Add Tasks to User List</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<p><code>GET /user/tasks</code></p>
+<h2 id='add-tasks-to-user-list'>Add Tasks to User List</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/user/tasks</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gold Saucer</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">frequency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Weekly</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">tasks</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
@@ -494,7 +520,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint save tasks the user has selected for their list, for a particular category.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks</code></p>
+<p><code>POST /user/tasks</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -519,7 +545,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>A list of task names</td>
 </tr>
 </tbody></table>
-<h1 id='user-completed-tasks'>User Completed Tasks</h1><h2 id='save-user-task-for-today'>Save User Task for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='user-completed-tasks'>User Completed Tasks</h1><h2 id='save-user-task-for-today'>Save User Task for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/user/tasks/current</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gold Saucer</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">frequency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Weekly</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">task</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Jumbo Cactpot</span><span class="dl">"</span><span class="p">,</span>
@@ -532,8 +558,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <p>This endpoint saves the submitted task status for the current day/week.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current</code></p>
-<h2 id='save-user-category-for-today'>Save User Category for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<p><code>POST /user/tasks/current</code></p>
+<h2 id='save-user-category-for-today'>Save User Category for Today</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/user/tasks/current</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gold Saucer</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">frequency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Weekly</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">done</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
@@ -545,7 +571,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <p>This endpoint saves all tasks under the given category for the current day/week.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current</code></p>
+<p><code>POST /user/tasks/current</code></p>
 
       </div>
       <div class="dark-box">

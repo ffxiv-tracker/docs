@@ -26,16 +26,20 @@ prod |
 # Authentication
 
 > First redirect the user to login:
+ 
 ```javascript
 window.location = 'https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/login';
 ```
 
 > The user will then be redirected back to the app with a `code` query parameter that needs to be parsed.
+ 
 ```javascript
 const params = new URLSearchParams(window.location.search);
 const code = params.get('code');
 ```
+
 > Exchange the code for a JWT through the API.
+
 ```javascript
 const api = axios.create({
   baseURL: 'https://hdnss8awo4.execute-api.us-west-2.amazonaws.com'
@@ -47,7 +51,9 @@ const exchangeResponse = await api.post('/exchange', {
 
 const jwt = exchangeResponse.data.jwt;
 ```
+
 > Set the JWT as an authorization header for all future requests.
+
 ```javascript
 
 api.defaults.headers.common['Authorization'] = `Bearer ${jwt}`

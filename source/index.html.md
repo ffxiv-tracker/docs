@@ -72,5 +72,5 @@ The API expects for the API key to be included in all API requests to the server
 `Authorization: Bearer JWT_GOES_HERE`
 
 <aside class="notice">
-You must replace <code>JWT_GOES_HERE</code> with the `jwt` from the `/exchange` response.
+You must replace <code>JWT_GOES_HERE</code> with the <code>jwt</code> from the <code>/exchange</code> response.
 </aside>

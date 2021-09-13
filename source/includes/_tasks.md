@@ -3,9 +3,7 @@
 ## Get All Master Tasks
 
 ```javascript
-const result = await axios(
-    'https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/tasks',
-);
+const result = await api.get('/tasks');
 ```
 
 > The above command returns JSON structured like this:
@@ -49,16 +47,14 @@ This endpoint retrieves all master tasks.
 
 ### HTTP Request
 
-`GET https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/tasks`
+`GET /tasks`
 
 # User Tasks
 
 ## Get User Tasks with Today's Status
 
 ```javascript
-const result = await axios(
-    'https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks',
-);
+const result = await api.get('/user/tasks');
 ```
 
 > The above command returns JSON structured like this:
@@ -96,12 +92,12 @@ This endpoint retrieves all tasks the user has selected for their list.
 
 ### HTTP Request
 
-`GET https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks`
+`GET /user/tasks`
 
 ## Add Tasks to User List
 
 ```javascript
-const result = await axios.post('https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks', {
+const result = await api.post('/user/tasks', {
   "category": "Gold Saucer",
   "frequency": "Weekly",
   "tasks": [
@@ -126,7 +122,7 @@ This endpoint save tasks the user has selected for their list, for a particular 
 
 ### HTTP Request
 
-`POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks`
+`POST /user/tasks`
 
 ### Body Parameters
 
@@ -141,7 +137,7 @@ tasks | `string[]` | A list of task names
 ## Save User Task for Today
 
 ```javascript
-const result = await axios.post('https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current', {
+const result = await api.post('/user/tasks/current', {
   "category": "Gold Saucer",
   "frequency": "Weekly",
   "task": "Jumbo Cactpot",
@@ -156,12 +152,12 @@ This endpoint saves the submitted task status for the current day/week.
 
 ### HTTP Request
 
-`POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current`
+`POST /user/tasks/current`
 
 ## Save User Category for Today
 
 ```javascript
-const result = await axios.post('https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current', {
+const result = await api.post('/user/tasks/current', {
   "category": "Gold Saucer",
   "frequency": "Weekly",
   "done": true
@@ -175,4 +171,4 @@ This endpoint saves all tasks under the given category for the current day/week.
 
 ### HTTP Request
 
-`POST https://hdnss8awo4.execute-api.us-west-2.amazonaws.com/user/tasks/current`
+`POST /user/tasks/current`
